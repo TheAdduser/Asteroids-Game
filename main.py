@@ -33,6 +33,12 @@ def main():
         screen.fill("black")
         updatable.update(dt)
 
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.check_collision(shot) == True:
+                    asteroid.split()
+                    shot.kill()
+
         shots.update(dt)
         for shot in shots:
             shot.draw(screen)
